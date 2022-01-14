@@ -2,8 +2,8 @@ const express = require('express')
 const cors = require('cors')
 
 let users = [
-   {username: 'davidfletcher', firstName: 'david', password: 'david1234' }, 
-   {username: 'sarafletcher', firstName: 'sara', password: 'sara1234' }
+   { username: 'davidfletcher', firstName: 'david', password: 'david1234' }, 
+   { username: 'sarafletcher', firstName: 'sara', password: 'sara1234' }
 ]
 
 const server = express()
@@ -17,7 +17,7 @@ server.get('/hello', (req, res)=>{
 
 // [GET] gets all users
 server.get('/api/users', (req, res, next)=>{
-   res.json(users)
+   res.json( users )
 })
 
 // [POST] posts a new registrant to the state
