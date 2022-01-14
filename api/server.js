@@ -1,24 +1,18 @@
 const express = require('express')
 const cors = require('cors')
 
-let users = [
-   { username: 'davidfletcher', firstName: 'david', password: 'david1234' }, 
-   { username: 'sarafletcher', firstName: 'sara', password: 'sara1234' }
-]
-
 const server = express()
+const usersRouter = require('./users/users-router')
 
 server.use(express.json())
 server.use(cors())
+
+server.use('/api', usersRouter);
 
 server.get('/hello', (req, res)=>{
    res.json({ message: 'hello my friends -- this will probably end up beingn my backend for my portfolio webpage' })
 })
 
-// [GET] gets all users
-server.get('/api/users', (req, res, next)=>{
-   res.json( users )
-})
 
 // [POST] posts a new registrant to the state
 server.post('/api/register',  (req, res, next)=>{
