@@ -32,7 +32,25 @@ server.post('/api/register',  (req, res, next)=>{
    }
 })
 
-//
+// [POST] login --> finding something in the list of arrays to match?
+server.post('/api/login', (req, res, next)=>{
+   // check the user array
+   try{
+      users.forEach(element => {
+         if (element.username === req.body.username ){
+            res.json({ message: `welcome in ${element.firstName}`})
+         } else {
+            console.log(users)
+            next()
+         }
+      });
+   } catch(err){
+      next(err)
+   }
+   
+   console.log(users)
+   
+})
 
 server.get('*', (req, res)=>{
    res.send(`
