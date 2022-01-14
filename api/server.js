@@ -1,10 +1,12 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
 
-const server = express()
-const usersRouter = require('./users/users-router')
+const server = express();
+const usersRouter = require('./users/users-router');
 
 server.use(express.json())
+server.use(express.static(path.join(__dirname, 'client/build')))
 server.use(cors())
 
 server.use('/api', usersRouter);
@@ -14,9 +16,7 @@ server.get('/hello', (req, res)=>{
 })
 
 server.get('*', (req, res)=>{
-   res.send(`
-      <h1> My App is Up! </h1>
-   `)
+   res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })
 
 server.use((err, req, res, next)=>{

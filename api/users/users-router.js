@@ -6,18 +6,10 @@ const {
    formattingUsers
 } = require('./users-middleware')
 
-// let users = [
-//    { username: 'davidfletcher', firstName: 'david', password: 'david1234' }, 
-//    { username: 'sarafletcher', firstName: 'sara', password: 'sara1234' }
-// ];
-
-// let users = []
-
 // [GET] gets all users
 router.get('/users', formattingUsers, (req, res, next)=>{
    try{
       let usersArr = req.users
-      console.log(usersArr)
       return res.json( usersArr)
    } catch(err){
       next(err)
@@ -38,13 +30,13 @@ router.post('/register', checkBody, pushNewUser, (req, res, next)=>{
 });
 
 // [POST] login --> finding something in the list of arrays to match?
-router.post('/login', (req, res, next)=>{
+router.post('/login', formattingUsers, (req, res, next)=>{
    try{
-      users.forEach(element => {
+      (req.users).forEach(element => {
          if ( element.username === req.body.username && element.password === element.password ){
             res.json({ message: `welcome in ${element.firstName}`})
          } else {
-            console.log(users)
+            // console.log(req.users)
             next()
          }
       });

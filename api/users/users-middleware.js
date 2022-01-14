@@ -44,3 +44,7 @@ function formattingUsers(req, res, next){
       next(err)
    }
 }
+
+// function checkUsernamePass(req, res, next){
+
+// }
