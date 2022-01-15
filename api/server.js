@@ -11,12 +11,13 @@ server.use(cors())
 
 server.use('/api', usersRouter);
 
-server.get('/hello', (req, res)=>{
-   res.json({ message: 'hello my friends -- this will probably end up beingn my backend for my portfolio webpage' })
+server.get('*', (req, res)=>{
+   // `<h1> hello </h1>`
+   res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })
 
-server.get('*', (req, res)=>{
-   res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+server.get('/hello', (req, res)=>{
+   res.json({ message: 'hello my friends -- this will probably end up beingn my backend for my portfolio webpage' })
 })
 
 server.use((err, req, res, next)=>{
