@@ -11,7 +11,7 @@ server.use(cors())
 
 server.use('/api', usersRouter);
 
-server.get('*', (req, res)=>{
+server.get('/', (req, res)=>{
    // `<h1> hello </h1>`
    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
 })

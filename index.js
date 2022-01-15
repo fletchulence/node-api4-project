@@ -1,7 +1,4 @@
 require('dotenv').config()
-const express = require('express');
-
-const path = require('path')
 
 const server = require('./api/server.js')
 
@@ -11,4 +8,4 @@ server.listen(PORT, ()=>{
    console.log(`listening on port: ${PORT}`)
 })
 
-server.use(express.static(path.join(__dirname, 'api/client/build')))
+// server.use(express.static(path.join(__dirname, 'api/client/build')))
