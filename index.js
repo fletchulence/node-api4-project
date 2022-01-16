@@ -8,4 +8,3 @@ server.listen(PORT, ()=>{
    console.log(`listening on port: ${PORT}`)
 })
 
-// server.use(express.static(path.join(__dirname, 'api/client/build')))
