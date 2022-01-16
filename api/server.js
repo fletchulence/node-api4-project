@@ -3,7 +3,7 @@ const path = require('path');
 // const cors = require('cors');
 
 const app = express();
-const usersRouter = require('./api/users/users-router');
+const usersRouter = require('./users/users-router');
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, 'client/build')))
